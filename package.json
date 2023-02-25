@@ -1,0 +1,34 @@
+{
+  "name": "vscode-dt0",
+  "displayName": "vscode-dt0",
+  "description": "DT0 language highlighter",
+  "version": "0.0.0",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "dt0",
+        "aliases": [
+          "DT0",
+          "dt0"
+        ],
+        "extensions": [
+          "dt0"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "dt0",
+        "scopeName": "source.dt0",
+        "path": "./syntaxes/dt0.tmLanguage.json"
+      }
+    ]
+  }
+}
