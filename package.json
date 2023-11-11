@@ -30,5 +30,12 @@
         "path": "./syntaxes/dt0.tmLanguage.json"
       }
     ]
+  },
+  "devDependencies": {
+    "@discretetom/r-compose": "^0.2.1",
+    "@types/node": "^20.9.0",
+    "tmlb": "^0.1.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
   }
 }
