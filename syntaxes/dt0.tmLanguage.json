@@ -1,72 +1,51 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-  "name": "DT0",
+  "scopeName": "source.dt0",
   "patterns": [
     {
-      "include": "#keywords"
+      "name": "comment.line.dt0",
+      "match": "\\/\\/(?:.)*(?:\\n|$)"
     },
     {
-      "include": "#builtin-types"
+      "name": "comment.block.dt0",
+      "begin": "\\/\\*",
+      "end": "(?:\\*\\/|$)"
     },
     {
-      "include": "#operator"
+      "name": "keyword.control.dt0",
+      "match": "\\b(?:fn|return|if|else|do|while)\\b"
     },
     {
-      "include": "#integer"
+      "name": "keyword.operator.assignment.dt0",
+      "match": "(?:=)"
     },
     {
-      "include": "#identifier"
+      "name": "keyword.operator.arithmetic.dt0",
+      "match": "(?:\\+|\\-|\\*|\\/|%)"
+    },
+    {
+      "name": "keyword.operator.logical.dt0",
+      "match": "(?:&&|\\|\\|)"
+    },
+    {
+      "name": "keyword.operator.comparison.dt0",
+      "match": "(?:==|!=|<|>|<=|>=)"
+    },
+    {
+      "name": "keyword.operator.bitwise.dt0",
+      "match": "(?:&|\\||\\^|~|<<|>>)"
+    },
+    {
+      "name": "punctuation.dt0",
+      "match": "(?::|,|\\(|\\)|\\{|\\}|;)"
+    },
+    {
+      "name": "variable.other.dt0",
+      "match": "[a-zA-Z_]\\w*"
+    },
+    {
+      "name": "constant.numeric.dt0",
+      "match": "\\b\\d+\\b"
     }
-  ],
-  "repository": {
-    "keywords": {
-      "patterns": [
-        {
-          "name": "keyword.control.dt0",
-          "match": "\\b(pub|fn|return|let|if|else)\\b"
-        }
-      ]
-    },
-    "builtin-types": {
-      "patterns": [
-        {
-          "name": "support.type.dt0",
-          "match": "\\b(i32)\\b"
-        }
-      ]
-    },
-    "operator": {
-      "patterns": [
-        {
-          "name": "keyword.operator.assignment.dt0",
-          "match": "\\="
-        },
-        {
-          "name": "keyword.operator.arithmetic.dt0",
-          "match": "(\\+\\+|\\-\\-|\\+|\\-|\\*|\\/)"
-        },
-        {
-          "name": "keyword.operator.dt0",
-          "match": "(\\&\\&|\\|\\|)"
-        }
-      ]
-    },
-    "integer": {
-      "patterns": [
-        {
-          "name": "constant.numeric.integer.dt0",
-          "match": "\\b([1-9][0-9]*|0)\\b"
-        }
-      ]
-    },
-    "identifier": {
-      "patterns": [
-        {
-          "name": "variable.other.dt0",
-          "match": "\\b[a-zA-Z_]\\w*\\b"
-        }
-      ]
-    }
-  },
-  "scopeName": "source.dt0"
+  ]
 }
