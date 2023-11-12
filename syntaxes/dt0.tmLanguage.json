@@ -4,12 +4,12 @@
   "patterns": [
     {
       "name": "comment.line.dt0",
-      "match": "\\/\\/(?:.)*(?:\\n|$)"
+      "match": "\\/\\/(?:.)*\\n"
     },
     {
       "name": "comment.block.dt0",
       "begin": "\\/\\*",
-      "end": "(?:\\*\\/|$)"
+      "end": "\\*\\/"
     },
     {
       "name": "keyword.control.dt0",

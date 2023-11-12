@@ -8,18 +8,19 @@ import { compose } from "@discretetom/r-compose";
 const language = new TmBuilder({ scopeName: "source.dt0" })
   .append({
     name: "comment.line.dt0",
-    match: compose(({ concat, select, escape, any }) =>
+    match: compose(({ concat, escape, any }) =>
       concat(
         escape("//"),
         any(/./), // in non-multiline mode, the /./ doesn't match the /\n/
-        select("\n", "$")
+        "\n" // we don't need to add /$/ here since `match` will only effect the current line
       )
     ).source,
   })
   .append({
     name: "comment.block.dt0",
     begin: compose(({ escape }) => escape("/*")).source,
-    end: compose(({ escape, select }) => select(escape("*/"), /$/)).source,
+    // DON'T add /$/ to the `end` since it represent the end of current line instead of the whole file
+    end: compose(({ escape }) => escape("*/")).source,
   })
   .append({
     name: "keyword.control.dt0",
