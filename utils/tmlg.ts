@@ -67,7 +67,25 @@ const language = new TmBuilder({ scopeName: "source.dt0" })
   // variables
   .append({
     name: "variable.other.dt0",
-    match: /[a-zA-Z_]\w*/.source,
+    match: compose(({ concat, lookahead, escape }) =>
+      concat(
+        /[a-zA-Z_]\w*/,
+        /\b/,
+        // if a variable is followed by a `(`, it's a function
+        lookahead(concat(/\s*/, escape("(")), { negative: true })
+      )
+    ).source,
+  })
+  .append({
+    name: "entity.name.function.dt0",
+    match: compose(({ concat, lookahead, escape }) =>
+      concat(
+        /[a-zA-Z_]\w*/,
+        /\b/,
+        // if a variable is followed by a `(`, it's a function
+        lookahead(concat(/\s*/, escape("(")))
+      )
+    ).source,
   })
   // constants
   .append({

@@ -41,7 +41,11 @@
     },
     {
       "name": "variable.other.dt0",
-      "match": "[a-zA-Z_]\\w*"
+      "match": "[a-zA-Z_]\\w*\\b(?!\\s*\\()"
+    },
+    {
+      "name": "entity.name.function.dt0",
+      "match": "[a-zA-Z_]\\w*\\b(?=\\s*\\()"
     },
     {
       "name": "constant.numeric.dt0",
