@@ -6,6 +6,7 @@ import { writeFileSync } from "fs";
 import { compose } from "@discretetom/r-compose";
 
 const language = new TmBuilder({ scopeName: "source.dt0" })
+  // comments
   .append({
     name: "comment.line.dt0",
     match: compose(({ concat, escape, any }) =>
@@ -22,12 +23,14 @@ const language = new TmBuilder({ scopeName: "source.dt0" })
     // DON'T add /$/ to the `end` since it represent the end of current line instead of the whole file
     end: compose(({ escape }) => escape("*/")).source,
   })
+  // keywords
   .append({
     name: "keyword.control.dt0",
     match: compose(({ concat, select }) =>
       concat(/\b/, select("fn", "return", "if", "else", "do", "while"), /\b/)
     ).source,
   })
+  // operators
   .append({
     name: "keyword.operator.assignment.dt0",
     match: compose(({ select, escape }) => select(...["="].map(escape))).source,
@@ -61,10 +64,12 @@ const language = new TmBuilder({ scopeName: "source.dt0" })
       select(...[":", ",", "(", ")", "{", "}", ";"].map(escape))
     ).source,
   })
+  // variables
   .append({
     name: "variable.other.dt0",
     match: /[a-zA-Z_]\w*/.source,
   })
+  // constants
   .append({
     name: "constant.numeric.dt0",
     match: /\b\d+\b/.source,
